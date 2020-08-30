@@ -27,75 +27,114 @@ class _FoodViewState extends State<FoodView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
-        title: Text(
-          'What do you want \nto eat today?',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 25.0,
-            fontWeight: FontWeight.bold,
-          ),
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
         ),
+        title: Text(''),
         centerTitle: false,
         actions: [
-          IconButton(
-              icon: Icon(
-                Icons.search,
-                color: Colors.black,
-              ),
-              onPressed: () {})
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: IconButton(
+                icon: Icon(
+                  Icons.drag_handle,
+                  color: Colors.black,
+                ),
+                onPressed: () {}),
+          ),
         ],
       ),
       body: Column(
         children: [
-          SizedBox(height: 30.0),
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Container(
-              height: 150,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+          Container(
+              color: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  foodCard('https://picsum.photos/535/354'),
-                  foodCard('https://picsum.photos/536/354'),
-                  foodCard('https://picsum.photos/537/354'),
-                  foodCard('https://picsum.photos/534/354'),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      'What do you want \nto eat today?',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.0),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[50],
+                                offset: new Offset(0.0, 0.0),
+                                blurRadius: 5.0,
+                                spreadRadius: 3.0)
+                          ],
+                        ),
+                        child: Icon(
+                          Icons.search,
+                          size: 20,
+                          color: Colors.black,
+                        )),
+                  ),
                 ],
-              ),
-            ),
-          ),
-
+              )),
+          Container(
+              color: Colors.white,
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Container(
+                  height: 150,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      foodCard('https://picsum.photos/535/354'),
+                      foodCard('https://picsum.photos/536/354'),
+                      foodCard('https://picsum.photos/537/354'),
+                      foodCard('https://picsum.photos/534/354'),
+                      foodCard('https://picsum.photos/534/355'),
+                      foodCard('https://picsum.photos/534/356')
+                    ],
+                  ),
+                ),
+              )),
           SizedBox(
             height: 20,
           ),
           Padding(
               padding: EdgeInsets.all(10.0),
               child: Container(
-                height: 100,
+                height: 80,
                 decoration: BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    //Expanded widget ile sarabilirsin.
                     Padding(
                       padding: EdgeInsets.all(10.0),
                       child: Row(
                         children: [
                           Container(
-                              height: 50,
-                              width: 50,
+                              height: 40,
+                              width: 40,
                               decoration: BoxDecoration(
                                 color: Colors.red,
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Icon(
                                 Icons.favorite,
-                                size: 30,
+                                size: 20,
                                 color: Colors.white,
                               )),
                           SizedBox(width: 10.0),
@@ -121,18 +160,13 @@ class _FoodViewState extends State<FoodView> {
                         ],
                       ),
                     ),
-
                     Icon(
                       Icons.arrow_forward,
-                      size: 40,
+                      size: 30,
                     ),
                   ],
                 ),
               )),
-          SizedBox(
-              //   height: 20
-              ),
-          //expanded burdaydı. container burdaydı.
           Expanded(
               child: ListView.builder(
             itemCount: foodList.length,
