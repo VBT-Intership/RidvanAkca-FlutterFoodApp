@@ -1,18 +1,45 @@
 import 'package:flutter/material.dart';
 import './food.dart';
 
-Widget foodCard(image) {
+Widget foodCard(image, type, count) {
   return AspectRatio(
     aspectRatio: 1.1 / 1.2,
-    child: Container(
-      margin: EdgeInsets.only(right: 10.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: NetworkImage(image),
+    child: Column(
+      children: [
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(right: 10.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.0),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(image),
+              ),
+            ),
+          ),
         ),
-      ),
+        SizedBox(height: 3.0),
+        Row(children: [
+          RichText(
+            text: TextSpan(
+              //style
+              children: [
+                TextSpan(
+                    text: '$type',
+                    style: TextStyle(color: Colors.grey, fontSize: 12.0)),
+                TextSpan(text: ' - ', style: TextStyle(color: Colors.grey)),
+                TextSpan(
+                    text: '$count item',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.0)),
+              ],
+            ),
+          ),
+        ]),
+        SizedBox(height: 10.0),
+      ],
     ),
   );
 }
@@ -23,6 +50,7 @@ class FoodView extends StatefulWidget {
 }
 
 class _FoodViewState extends State<FoodView> {
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,18 +126,20 @@ class _FoodViewState extends State<FoodView> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      foodCard('https://picsum.photos/535/354'),
-                      foodCard('https://picsum.photos/536/354'),
-                      foodCard('https://picsum.photos/537/354'),
-                      foodCard('https://picsum.photos/534/354'),
-                      foodCard('https://picsum.photos/534/355'),
-                      foodCard('https://picsum.photos/534/356')
+                      foodCard('https://picsum.photos/535/354', 'sweet', 12),
+                      foodCard(
+                          'https://picsum.photos/536/354', 'beverages', 41),
+                      foodCard('https://picsum.photos/537/354', 'salty', 5),
+                      foodCard('https://picsum.photos/534/354', 'sweet', 15),
+                      foodCard(
+                          'https://picsum.photos/534/355', 'beverages', 10),
+                      foodCard('https://picsum.photos/534/356', 'salty', 9)
                     ],
                   ),
                 ),
               )),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           Padding(
               padding: EdgeInsets.all(10.0),
@@ -201,7 +231,6 @@ class _FoodViewState extends State<FoodView> {
           )),
         ],
       ),
-      //   bottomNavigationBar: BottomNavigationBar(items: []),
     );
   }
 }
