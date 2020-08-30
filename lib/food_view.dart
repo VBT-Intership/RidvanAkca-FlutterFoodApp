@@ -65,13 +65,74 @@ class _FoodViewState extends State<FoodView> {
               ),
             ),
           ),
+
           SizedBox(
             height: 20,
           ),
-          Text('PopularTitle', style: Theme.of(context).textTheme.headline6),
+          Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Container(
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //Expanded widget ile sarabilirsin.
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Row(
+                        children: [
+                          Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: Icon(
+                                Icons.favorite,
+                                size: 30,
+                                color: Colors.white,
+                              )),
+                          SizedBox(width: 10.0),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Popular',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25.0,
+                                ),
+                              ),
+                              Text(
+                                'Monggo, entekno duwekmu!',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+
+                    Icon(
+                      Icons.arrow_forward,
+                      size: 40,
+                    ),
+                  ],
+                ),
+              )),
           SizedBox(
-            height: 15,
-          ),
+              //   height: 20
+              ),
+          //expanded burdaydı. container burdaydı.
           Expanded(
               child: ListView.builder(
             itemCount: foodList.length,
@@ -106,16 +167,7 @@ class _FoodViewState extends State<FoodView> {
           )),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.accessibility),
-          title: Text('data'),
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.accessibility),
-          title: Text('data'),
-        )
-      ]),
+      //   bottomNavigationBar: BottomNavigationBar(items: []),
     );
   }
 }
